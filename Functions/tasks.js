@@ -4,8 +4,14 @@ function max(num1, num2) {
     if (num1 > num2) {
         return num1;
     }
-    return num2;
+    if (num2 > num1) {
+        return num2;
+    }
+
+    return 'Numbers are equal';  
 }
+
+console.log(max(10, 5));
 
 
 /* 2. Write a program that checks if a given number is odd. */
@@ -14,11 +20,18 @@ function isOdd(number) {
     return number % 2 !== 0;
 }
 
+console.log(isOdd(3));
+
 
 /* 3. Write a program that checks if a given number is a three digit long number. */
 
 function threeDigit (num) {
-    return num >= 100 && num < 1000; 
+    var abs = num;
+    if (abs < 0) {
+        abs *= -1;
+    }
+
+    return abs >= 100 && abs < 1000; 
 }
 
 console.log(threeDigit(200));
@@ -121,7 +134,13 @@ console.log(starOut(3, 6, 10, 11));
 
 function numOfDigits (number) {
     var br = 0;
-    for (var i = number; i > 1; i /= 10) {
+    var absNum = num;
+
+    if(absNum < 0) {
+        absNum *= -1;
+    }
+
+    for (var i = absNum; i >= 1; i /= 10) {
         br++;
     }
     return br;
